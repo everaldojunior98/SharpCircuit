@@ -1,4 +1,4 @@
-﻿using System;
+﻿﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -13,18 +13,18 @@ namespace SharpCircuitTest {
 
 		[TestCase(0, 0, 0, false)]
 		[TestCase(0, 0, 1, false)]
-		[TestCase(1, 0, 0, true )]
-		[TestCase(1, 0, 1, false)]
-		[TestCase(1, 1, 0, true )]
-		[TestCase(1, 1, 1, true )]
 		[TestCase(0, 1, 0, false)]
 		[TestCase(0, 1, 1, true )]
+		[TestCase(1, 0, 0, true )]
+		[TestCase(1, 0, 1, true)]
+		[TestCase(1, 1, 0, false )]
+		[TestCase(1, 1, 1, true )]
 		public void TwoToOneMuxTest(int int0, int int1, int int2, bool out0) {
 			Circuit sim = new Circuit();
 
 			var logicIn0 = sim.Create<LogicInput>();
+			var selector = sim.Create<LogicInput>();
 			var logicIn1 = sim.Create<LogicInput>();
-			var logicIn2 = sim.Create<LogicInput>();
 			var logicOut0 = sim.Create<LogicOutput>();
 
 			var tri0 = sim.Create<TriStateBuffer>();
@@ -35,16 +35,17 @@ namespace SharpCircuitTest {
 			sim.Connect(logicIn0.leadOut, tri0.leadIn);
 			sim.Connect(logicIn1.leadOut, tri1.leadIn);
 
-			sim.Connect(logicIn2.leadOut, tri0.leadGate);
-			sim.Connect(logicIn2.leadOut, invert0.leadIn);
-			sim.Connect(invert0.leadOut, tri1.leadGate);
+			sim.Connect(selector.leadOut, tri1.leadGate);
+			sim.Connect(selector.leadOut, invert0.leadIn);
+			sim.Connect(invert0.leadOut, tri0.leadGate);
 
 			sim.Connect(tri0.leadOut, tri1.leadOut);
+			sim.Connect(tri0.leadOut,logicOut0.leadIn);
 			
 
 			logicIn0.setPosition(int0);
-			logicIn1.setPosition(int1);
-			logicIn2.setPosition(int2);
+			selector.setPosition(int1);
+			logicIn1.setPosition(int2);
 
 			sim.doTicks(100);
 

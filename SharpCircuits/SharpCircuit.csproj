@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{A31FA9F2-BB15-469E-92DE-870DEE03A82B}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>SharpCircuit</RootNamespace>
     <AssemblyName>SharpCircuit</AssemblyName>
@@ -42,10 +42,14 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="UnityEngine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\..\..\Program Files\2019.4.3f1\Editor\Data\Managed\UnityEngine.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="src\CircuitElement.cs" />
     <Compile Include="src\Circuit.cs" />
+    <Compile Include="src\CircuitNode.cs" />
     <Compile Include="src\Diode.cs" />
     <Compile Include="src\elements\AMSource.cs" />
     <Compile Include="src\elements\AnalogSwitch2.cs" />

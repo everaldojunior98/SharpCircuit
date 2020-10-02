@@ -1,4 +1,4 @@
-﻿using System;
+﻿﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -10,6 +10,7 @@ namespace SharpCircuit {
 
 		public SwitchSPDT() : base() {
 			posCount = 3;
+			allocLeads();
 		}
 
 		public override int getLeadCount() {

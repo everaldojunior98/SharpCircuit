@@ -1,4 +1,4 @@
-﻿using System;
+﻿﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -46,12 +46,15 @@ namespace SharpCircuitTest {
 			var resCompare = sim.Create<Resistor>(in0 * 100);
 
 			List<Resistor> resistors = new List<Resistor>();
-			for(int i = 0; i < in0; i++)
-				resistors.Add(sim.Create<Resistor>());
+			for (int i = 0; i < in0; i++)
+			{
+				var r = sim.Create<Resistor>(100);
+				resistors.Add(r);
+			}
 
 			sim.Connect(volt0.leadPos, resistors.First().leadIn);
 			
-			for(int i = 1; i < in0 - 1; i++)
+			for (int i = 1; i < in0; i++)
 				sim.Connect(resistors[i - 1].leadOut, resistors[i].leadIn);
 			
 			sim.Connect(volt0.leadNeg, resistors.Last().leadOut);
