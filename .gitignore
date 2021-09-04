@@ -40,3 +40,4 @@ UpgradeLog.XML
 *.ReSharper
 *.userprefs
 /.vs
+/packages
