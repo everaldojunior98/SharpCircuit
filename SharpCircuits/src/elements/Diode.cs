@@ -7,6 +7,7 @@ namespace SharpCircuit {
 	public class Diode : CircuitElement {
 
 		public const double DEFAULT_DROP = 0.805904783;
+		public const double LED_DEFAULT_DROP = 2.1024259;
 
 		public Circuit.Lead leadIn { get { return lead0; } }
 		public Circuit.Lead leadOut { get { return lead1; } }

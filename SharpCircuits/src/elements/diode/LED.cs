@@ -7,7 +7,7 @@ namespace SharpCircuit {
 	public class LED : Diode {
 
 		public LED() : base() {
-			forwardDrop = 2.1024259;
+			forwardDrop = LED_DEFAULT_DROP;
 			setup();
 		}
 
