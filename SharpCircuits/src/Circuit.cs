@@ -34,8 +34,6 @@ namespace SharpCircuit {
 			}
 		}
 
-		public int speed { get; set; } // 172 // Math.Log(10 * 14.3) * 24 + 61.5;
-
 		public List<ICircuitElement> elements { get; set; }
 		public List<long[]> nodeMesh { get; set; }
 
@@ -68,7 +66,6 @@ namespace SharpCircuit {
 		Dictionary<ICircuitElement, List<ScopeFrame>> scopeMap;
 
 		public Circuit() {
-			speed = 172;
 			snowflake = new IdWorker(1, 1);
 			elements = new List<ICircuitElement>();
 			nodeMesh = new List<long[]>();
