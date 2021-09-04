@@ -49,7 +49,7 @@ namespace SharpCircuit {
 		bool _analyze = true;
 		double _timeStep = 5E-6;
 
-		List<long> nodeList = new List<long>();
+		List<CircuitNode> nodeList = new List<CircuitNode>();
 		ICircuitElement[] voltageSources;
 
 		double[][] circuitMatrix; // contains circuit state
@@ -87,7 +87,7 @@ namespace SharpCircuit {
 				
 				nodeMesh.Add(new long[elm.getLeadCount()]);
 				for(int x = 0; x < elm.getLeadCount(); x++)
-					nodeMesh[nodeMesh.Count - 1][x] = -1;
+					nodeMesh[nodeMesh.Count - 1][x] = snowflake.NextId();
 
 				int e_ndx = elements.Count - 1;
 				int m_ndx = nodeMesh.Count - 1;
@@ -117,7 +117,8 @@ namespace SharpCircuit {
 
 			if(rightLeadNdx >= rightLeads.Length)
 				Array.Resize(ref rightLeads, rightLeadNdx + 1);
-
+			
+			/*
 			long leftConn = leftLeads[leftLeadNdx];
 			long rightConn = rightLeads[rightLeadNdx];
 
@@ -136,7 +137,21 @@ namespace SharpCircuit {
 
 			// If the right lead is unconnected, attach to left node
 			// If the right lead is _connected_, replace with left node
-			rightLeads[rightLeadNdx] = leftLeads[leftLeadNdx];
+			rightLeads[rightLeadNdx] = leftLeads[leftLeadNdx];*/
+
+			long leftConn = leftLeads[leftLeadNdx];
+			long rightConn = rightLeads[rightLeadNdx];
+			
+			for (int i = 0; i < nodeMesh.Count; i++)
+			{
+				for (int j = 0; j < nodeMesh[i].Length; j++)
+				{
+					if (nodeMesh[i][j] == rightConn)
+					{
+						nodeMesh[i][j] = leftConn;
+					}
+				}
+			}
 		}
 
 		public List<ScopeFrame> Watch(ICircuitElement component) {
@@ -162,8 +177,8 @@ namespace SharpCircuit {
 			stampRightSide(vn, v);
 		}
 
-		public long getNodeId(int ndx) {
-			return (ndx < nodeList.Count) ? nodeList[ndx] : 0;
+		public CircuitNode getCircuitNode(int ndx) {
+			return (ndx < nodeList.Count) ? nodeList[ndx] : null;
 		}
 
 		public ICircuitElement getElm(int n) {
@@ -236,27 +251,36 @@ namespace SharpCircuit {
 				// Solve the factorized matrix
 				lu_solve(circuitMatrix, circuitMatrixSize, circuitPermute, circuitRightSide);
 
-				for(int j = 0; j != circuitMatrixFullSize; j++) {
+				for(int j = 0; j != circuitMatrixFullSize; j++) 
+				{
 					double res = 0;
 
 					RowInfo ri = circuitRowInfo[j];
 					res = (ri.type == RowInfo.ROW_CONST) ? ri.value : circuitRightSide[ri.mapCol];
 
 					// If any resuit is NaN, break
-					if(Double.IsNaN(res)) {
+					if(Double.IsNaN(res))
+					{
 						converged = false;
 						break;
 					}
 
-					if(j < nodeList.Count - 1) {
+					if(j < nodeList.Count - 1) 
+					{
 						// For each node in the mesh
-						for(int k = 0; k != nodeMesh.Count; k++) {
-							List<long> leads = new List<long>(nodeMesh[k]); // Get the leads conected to the node
-							int ndx = leads.IndexOf(getNodeId(j + 1)); 
-							if(ndx != -1) 
-								elements[k].setLeadVoltage(ndx, res);
+						CircuitNode cn = getCircuitNode(j + 1);
+						for(int k = 0; k != cn.links.Count; k++)
+						{
+							CircuitNodeLink cnl = (CircuitNodeLink) cn.links[k];
+							//List<long> leads = new List<long>(nodeMesh[k]); // Get the leads conected to the node
+							//int ndx = leads.IndexOf(getCircuitNode(j + 1)); 
+							//if(ndx != -1) 
+							//elements[k].setLeadVoltage(ndx, res);
+							cnl.elm.setLeadVoltage(cnl.leadNdx, res);
 						}
-					} else {
+					} 
+					else 
+					{
 						int ji = j - (nodeList.Count - 1);
 						voltageSources[ji].setCurrent(ji, res);
 					}
@@ -283,13 +307,13 @@ namespace SharpCircuit {
 				return;
 
 			nodeList.Clear();
-			List<bool> internalList = new List<bool>();
+			/*List<bool> internalList = new List<bool>();
 			Action<long, bool> pushNode = (id, isInternal) => {
 				if(!nodeList.Contains(id)) {
 					nodeList.Add(id);
 					internalList.Add(isInternal);
 				}
-			};
+			};*/
 
 			#region //// Look for Voltage or Ground element ////
 			// Search the circuit for a Ground, or Voltage sourcre
@@ -314,13 +338,16 @@ namespace SharpCircuit {
 
 			// If no ground and no rails, then the voltage elm's first terminal is ground.
 			if(!gotGround && !gotRail && voltageElm != null) {
-				int elm_ndx = elements.IndexOf(voltageElm);
-				long[] ndxs = nodeMesh[elm_ndx];
-				pushNode(ndxs[0], false);
+				CircuitNode cn = new CircuitNode();
+				long[] ndxs = nodeMesh[elements.IndexOf(voltageElm)];
+				cn.id = ndxs[0];
+				nodeList.Add(cn);
 			} else {
 				// If the circuit contains a ground, rail, or voltage
 				// element, push a temporary node to the node list.
-				pushNode(snowflake.NextId(), false);
+				CircuitNode cn = new CircuitNode();
+				cn.id = -1;
+				nodeList.Add(cn);
 			}
 			#endregion
 
@@ -343,33 +370,61 @@ namespace SharpCircuit {
 				}
 				
 				// For each lead in the element
-				for(int leadX = 0; leadX != leads; leadX++) {
-					long leadNode = nodeMesh[i][leadX];        // Id of the node leadX is connected too
-					int node_ndx = nodeList.IndexOf(leadNode); // Index of the leadNode in the nodeList
-					if(node_ndx == -1) {
+				for(int j = 0; j != leads; j++) {
+					long leadNode = nodeMesh[i][j]; // Id of the node leadX is connected too
+
+					int k;
+
+					for (k = 0; k != nodeList.Count; k++)
+					{
+						CircuitNode cn = getCircuitNode(k);
+						if(leadNode == cn.id)
+							break;
+					}
+					
+					if(k == nodeList.Count) {
 						// If the nodeList doesn't contain the node, push it
 						// onto the list and assign it's new index to the lead.
-						elm.setLeadNode(leadX, nodeList.Count);
-						pushNode(leadNode, false);
+						
+						CircuitNode cn = new CircuitNode();
+						cn.id = leadNode;
+						CircuitNodeLink cnl = new CircuitNodeLink();
+						cnl.leadNdx = j;
+						cnl.elm = elm;
+						cn.links.Add(cnl);
+						elm.setLeadNode(j, nodeList.Count);
+						nodeList.Add(cn);
 					} else {
 						// Otherwise, assign the lead the index of 
 						// the node in the nodeList.
-						elm.setLeadNode(leadX, node_ndx);
+						CircuitNodeLink cnl = new CircuitNodeLink();
+						cnl.leadNdx = j;
+						cnl.elm = elm;
+						getCircuitNode(k).links.Add(cnl);
+						elm.setLeadNode(j, k);
 
-						if(leadNode == 0) {
+						if(k == 0) {
 							// if it's the ground node, make sure the 
 							// node voltage is 0, cause it may not get set later
-							elm.setLeadVoltage(leadX, 0); // TODO: ??
+							elm.setLeadVoltage(j, 0); // TODO: ??
 						}
 					}
 				}
 				
+				
 				// Push an internal node onto the list for
 				// each internal lead on the element.
-				int internalLeads = elm.getInternalLeadCount();
-				for(int x = 0; x != internalLeads; x++) {
-					elm.setLeadNode(leads + x, nodeList.Count);
-					pushNode(snowflake.NextId(), true);
+				for (int j = 0; j != elm.getInternalLeadCount(); j++)
+				{
+					CircuitNode cn = new CircuitNode();
+					cn.id = -1;
+					cn.isInternal = true;
+					CircuitNodeLink cnl = new CircuitNodeLink();
+					cnl.leadNdx = j + leads;
+					cnl.elm = elm;
+					cn.links.Add(cnl);
+					elm.setLeadNode(cnl.leadNdx, nodeList.Count);
+					nodeList.Add(cn);
 				}
 
 				vscount += elm.getVoltageSourceCount();
@@ -386,15 +441,17 @@ namespace SharpCircuit {
 			circuitNonLinear = false;
 			//for(int i = 0; i != elements.Count; i++) {
 			//	ICircuitElement elem = elements[i];
-			foreach(ICircuitElement elem in elements){
-				
-				if(elem.nonLinear()) circuitNonLinear = true;
 
-				// Assign each votage source in the element a globally unique id,
-				// (the index of the next open slot in voltageSources)
-				for(int leadX = 0; leadX != elem.getVoltageSourceCount(); leadX++) {
-					voltageSources[vscount] = elem; 
-					elem.setVoltageSource(leadX, vscount++);
+			for (int i = 0; i != elements.Count; i++)
+			{
+				ICircuitElement elm = getElm(i);
+				if (elm.nonLinear())
+					circuitNonLinear = true;
+				int ivs = elm.getVoltageSourceCount();
+				for (int j = 0; j != ivs; j++)
+				{
+					voltageSources[vscount] = elm;
+					elm.setVoltageSource(j, vscount++);
 				}
 			}
 
@@ -439,16 +496,16 @@ namespace SharpCircuit {
 					ICircuitElement ce = elements[i];
 					// loop through all ce's nodes to see if they are connected
 					// to other nodes not in closure
-					for(int leadX = 0; leadX < ce.getLeadCount(); leadX++) {
-						if(!closure[ce.getLeadNode(leadX)]) {
-							if(ce.leadIsGround(leadX))
-								closure[ce.getLeadNode(leadX)] = changed = true;
+					for(int j = 0; j < ce.getLeadCount(); j++) {
+						if(!closure[ce.getLeadNode(j)]) {
+							if(ce.leadIsGround(j))
+								closure[ce.getLeadNode(j)] = changed = true;
 							continue;
 						}
 						for(int k = 0; k != ce.getLeadCount(); k++) {
-							if(leadX == k) continue;
+							if(j == k) continue;
 							int kn = ce.getLeadNode(k);
-							if(ce.leadsAreConnected(leadX, k) && !closure[kn]) {
+							if(ce.leadsAreConnected(j, k) && !closure[kn]) {
 								closure[kn] = true;
 								changed = true;
 							}
@@ -461,7 +518,7 @@ namespace SharpCircuit {
 
 				// connect unconnected nodes
 				for(int i = 0; i != nodeList.Count; i++) {
-					if(!closure[i] && !internalList[i]) {
+					if(!closure[i] && !getCircuitNode(i).isInternal) {
 						//System.out.println("node " + i + " unconnected");
 						stampResistor(0, i, 1E8);
 						closure[i] = true;

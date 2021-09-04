@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Repositories\SharpCircuit" t="IncludeFlat">
+      <e p="packages" t="ExcludeRecursive" />
+      <e p="SharpCircuit.sln" t="IncludeFlat" />
+      <e p="SharpCircuits" t="IncludeRecursive">
+        <e p="App.config" t="Include" />
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="obj" t="ExcludeRecursive" />
+        <e p="Program.cs" t="Include" />
+        <e p="Properties" t="Include">
+          <e p="AssemblyInfo.cs" t="Include" />
+        </e>
+        <e p="SharpCircuit.csproj" t="IncludeRecursive" />
+        <e p="Snowflake" t="Include">
+          <e p="DisposableAction.cs" t="Include" />
+          <e p="IdWorker.cs" t="Include" />
+          <e p="InvalidSystemClock.cs" t="Include" />
+          <e p="TimeExtensions.cs" t="Include" />
+        </e>
+        <e p="src" t="Include">
+          <e p="Circuit.cs" t="Include" />
+          <e p="CircuitElement.cs" t="Include" />
+          <e p="CircuitNode.cs" t="Include" />
+          <e p="Diode.cs" t="Include" />
+          <e p="elements" t="Include">
+            <e p="AMSource.cs" t="Include" />
+            <e p="AnalogSwitch.cs" t="Include" />
+            <e p="AnalogSwitch2.cs" t="Include" />
+            <e p="CapacitorElm.cs" t="Include" />
+            <e p="chip" t="Include">
+              <e p="ADCElm.cs" t="Include" />
+              <e p="CC2Elm.cs" t="Include" />
+              <e p="CounterElm.cs" t="Include" />
+              <e p="DACElm.cs" t="Include" />
+              <e p="DecadeElm.cs" t="Include" />
+              <e p="DeMultiplexerElm.cs" t="Include" />
+              <e p="DFlipFlop.cs" t="Include" />
+              <e p="FullAdder.cs" t="Include" />
+              <e p="HalfAdder.cs" t="Include" />
+              <e p="JKFlipFlopElm.cs" t="Include" />
+              <e p="LatchElm.cs" t="Include" />
+              <e p="LEDMatrixElm.cs" t="Include" />
+              <e p="MultiplexerElm.cs" t="Include" />
+              <e p="PhaseCompElm.cs" t="Include" />
+              <e p="PisoShiftElm.cs" t="Include" />
+              <e p="SeqGenElm.cs" t="Include" />
+              <e p="SevenSegDecoderElm.cs" t="Include" />
+              <e p="SevenSegElm.cs" t="Include" />
+              <e p="SipoShiftElm.cs" t="Include" />
+              <e p="SRAMElm.cs" t="Include" />
+              <e p="TFlipFlopElm.cs" t="Include" />
+              <e p="TimerElm.cs" t="Include" />
+              <e p="VCOElm.cs" t="Include" />
+            </e>
+            <e p="Chip.cs" t="Include" />
+            <e p="CurrentSource.cs" t="Include" />
+            <e p="diode" t="Include">
+              <e p="LEDElm.cs" t="Include" />
+              <e p="ZenerElm.cs" t="Include" />
+            </e>
+            <e p="DiodeElm.cs" t="Include" />
+            <e p="FMSource.cs" t="Include" />
+            <e p="gate" t="Include">
+              <e p="AndGate.cs" t="Include" />
+              <e p="NandGate.cs" t="Include" />
+              <e p="NorGate.cs" t="Include" />
+              <e p="OrGate.cs" t="Include" />
+              <e p="XorGate.cs" t="Include" />
+            </e>
+            <e p="Ground.cs" t="Include" />
+            <e p="InductorElm.cs" t="Include" />
+            <e p="Inverter.cs" t="Include" />
+            <e p="InvertingSchmittTrigger.cs" t="Include" />
+            <e p="Lamp.cs" t="Include" />
+            <e p="LogicGate.cs" t="Include" />
+            <e p="LogicInput.cs" t="Include" />
+            <e p="LogicOutput.cs" t="Include" />
+            <e p="Memristor.cs" t="Include" />
+            <e p="mosfet" t="Include">
+              <e p="JfetElm.cs" t="Include" />
+              <e p="NMosfet.cs" t="Include" />
+              <e p="PMosfet.cs" t="Include" />
+            </e>
+            <e p="Mosfet.cs" t="Include" />
+            <e p="OpAmp.cs" t="Include" />
+            <e p="Output.cs" t="Include" />
+            <e p="Potentiometer.cs" t="Include" />
+            <e p="Probe.cs" t="Include" />
+            <e p="Resistor.cs" t="Include" />
+            <e p="SchmittTrigger.cs" t="Include" />
+            <e p="SiliconRectifier.cs" t="Include" />
+            <e p="SparkGap.cs" t="Include" />
+            <e p="SwitchSPDT.cs" t="Include" />
+            <e p="SwitchSPST.cs" t="Include" />
+            <e p="TappedTransformer.cs" t="Include" />
+            <e p="Transformer.cs" t="Include" />
+            <e p="Transistor.cs" t="Include" />
+            <e p="Triode.cs" t="Include" />
+            <e p="TriStateBuffer.cs" t="Include" />
+            <e p="TunnelDiode.cs" t="Include" />
+            <e p="voltage" t="Include">
+              <e p="ACVoltageSource.cs" t="Include" />
+              <e p="DCVoltageSource.cs" t="Include" />
+              <e p="rail" t="Include">
+                <e p="AntennaInput.cs" t="Include" />
+                <e p="ClockInput.cs" t="Include" />
+                <e p="VarRailElm.cs" t="Include" />
+              </e>
+              <e p="VoltageInput.cs" t="Include" />
+            </e>
+            <e p="Voltage.cs" t="Include" />
+            <e p="Wire.cs" t="Include" />
+          </e>
+          <e p="ICircuitElement.cs" t="Include" />
+          <e p="RowInfo.cs" t="Include" />
+          <e p="SIUnits.cs" t="Include" />
+        </e>
+      </e>
+      <e p="SharpCircuitsTest" t="IncludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="obj" t="ExcludeRecursive" />
+        <e p="Properties" t="Include">
+          <e p="AssemblyInfo.cs" t="Include" />
+        </e>
+        <e p="SharpCircuitTest.csproj" t="IncludeRecursive" />
+        <e p="src" t="Include">
+          <e p="ACVoltageTest.cs" t="Include" />
+          <e p="ChipTest.cs" t="Include" />
+          <e p="DCVoltageTest.cs" t="Include" />
+          <e p="DiodeTest.cs" t="Include" />
+          <e p="GateTest.cs" t="Include" />
+          <e p="logic" t="Include">
+            <e p="NMOSTest.cs" t="Include" />
+          </e>
+          <e p="MosfetTest.cs" t="Include" />
+          <e p="OpAmpTest.cs" t="Include" />
+          <e p="ResistorTest.cs" t="Include" />
+          <e p="SimpleTest.cs" t="Include" />
+          <e p="TestUtils.cs" t="Include" />
+          <e p="TransistorTest.cs" t="Include" />
+          <e p="TriStateBufferTest.cs" t="Include" />
+          <e p="VoltageWaveTest.cs" t="Include" />
+        </e>
+      </e>
+    </e>
+    <e p="C:\Users\txses\.Rider2019.3\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\txses\.Rider2019.3\system\resharper-host\local\Transient\ReSharperHost\v193\SolutionCaches\_SharpCircuit.-90645215.00" t="ExcludeRecursive" />
+  </component>
+</project>
