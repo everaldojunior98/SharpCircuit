@@ -6,6 +6,14 @@ namespace SharpCircuit {
 
 	public class Timer : Chip {
 
+		public const int N_DIS = 0;
+		public const int N_TRIG = 1;
+		public const int N_THRES = 2;
+		public const int N_VIN = 3;
+		public const int N_CTL = 4;
+		public const int N_OUT = 5;
+		public const int N_RST = 6;
+
 		public bool hasResetPin {
 			get {
 				return _hasReset;
@@ -16,14 +24,6 @@ namespace SharpCircuit {
 				allocLeads();
 			}
 		}
-
-		public int N_DIS = 0;
-		public int N_TRIG = 1;
-		public int N_THRES = 2;
-		public int N_VIN = 3;
-		public int N_CTL = 4;
-		public int N_OUT = 5;
-		public int N_RST = 6;
 
 		private bool _hasReset = true;
 
