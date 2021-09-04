@@ -6,6 +6,8 @@ namespace SharpCircuit {
 
 	public class Diode : CircuitElement {
 
+		public const double DEFAULT_DROP = 0.805904783;
+
 		public Circuit.Lead leadIn { get { return lead0; } }
 		public Circuit.Lead leadOut { get { return lead1; } }
 
@@ -40,11 +42,9 @@ namespace SharpCircuit {
 		protected double _forwardDrop;
 		protected double _zvoltage;
 
-		protected double defaultdrop = 0.805904783;
-
 		public Diode() : base() {
 			diode = new DiodeBase();
-			forwardDrop = defaultdrop;
+			forwardDrop = DEFAULT_DROP;
 			zvoltage = 0;
 			setup();
 		}
