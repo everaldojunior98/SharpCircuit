@@ -97,7 +97,7 @@ namespace SharpCircuit {
 			gm = 0;
 			double Gds = 0;
 			double beta = getBeta();
-			if(vgs > .5 && this is JfetElm) {
+			if(vgs > .5 && this is Jfet) {
 				sim.panic("JFET is reverse biased!", this);
 				return;
 			}

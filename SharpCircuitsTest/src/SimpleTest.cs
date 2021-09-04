@@ -130,7 +130,7 @@ namespace SharpCircuitTest {
 			Circuit sim = new Circuit();
 
 			var source0 = sim.Create<DCVoltageSource>();
-			var inductor0 = sim.Create<InductorElm>(inductance);
+			var inductor0 = sim.Create<Inductor>(inductance);
 
 			sim.Connect(source0.leadPos, inductor0.leadIn);
 			sim.Connect(inductor0.leadOut, source0.leadNeg);
@@ -152,7 +152,7 @@ namespace SharpCircuitTest {
 			Circuit sim = new Circuit();
 
 			var source0 = sim.Create<VoltageInput>(Voltage.WaveType.AC);
-			var inductor0 = sim.Create<InductorElm>(inductance);
+			var inductor0 = sim.Create<Inductor>(inductance);
 			var out0 = sim.Create<Ground>();
 
 			sim.Connect(source0.leadPos, inductor0.leadIn);

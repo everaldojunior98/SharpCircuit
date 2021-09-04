@@ -6,13 +6,13 @@ namespace SharpCircuit {
 
 	// Contributed by Edward Calver
 
-	public class PisoShiftElm : Chip {
+	public class PisoShift : Chip {
 
 		private short data = 0;// Lack of unsigned types sucks
 		private bool clockstate = false;
 		private bool modestate = false;
 
-		public PisoShiftElm() : base() {
+		public PisoShift() : base() {
 
 		}
 

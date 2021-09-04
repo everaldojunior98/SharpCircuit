@@ -4,12 +4,12 @@ using System.Collections.Generic;
 
 namespace SharpCircuit {
 
-	public class LatchElm : Chip {
+	public class Latch : Chip {
 
 		private int loadPin;
 		private bool lastLoad = false;
 
-		public LatchElm() : base() {
+		public Latch() : base() {
 
 		}
 

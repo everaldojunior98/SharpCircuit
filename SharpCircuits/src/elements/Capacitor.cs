@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace SharpCircuit {
 
-	public class CapacitorElm : CircuitElement {
+	public class Capacitor : CircuitElement {
 
 		public Circuit.Lead leadIn { get { return lead0; } }
 		public Circuit.Lead leadOut { get { return lead1; } }
@@ -30,11 +30,11 @@ namespace SharpCircuit {
 		private double voltdiff;
 		private double curSourceValue;
 
-		public CapacitorElm() : base() {
+		public Capacitor() : base() {
 			isTrapezoidal = true;
 		}
 
-		public CapacitorElm(double c) : base() {
+		public Capacitor(double c) : base() {
 			capacitance = c;
 			isTrapezoidal = true;
 		}

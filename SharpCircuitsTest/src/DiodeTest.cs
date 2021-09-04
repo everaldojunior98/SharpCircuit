@@ -16,7 +16,7 @@ namespace SharpCircuitTest {
 			Circuit sim = new Circuit();
 
 			var voltage0 = sim.Create<VoltageInput>(Voltage.WaveType.AC);
-			var diode = sim.Create<DiodeElm>();
+			var diode = sim.Create<Diode>();
 			var ground = sim.Create<Ground>();
 
 			sim.Connect(voltage0.leadPos, diode.leadIn);
@@ -68,7 +68,7 @@ namespace SharpCircuitTest {
 			Circuit sim = new Circuit();
 			
 			Voltage voltage0 = sim.Create<Voltage>(Voltage.WaveType.AC);
-			DiodeElm diode0 = sim.Create<DiodeElm>();
+			Diode diode0 = sim.Create<Diode>();
 			Resistor res0 = sim.Create<Resistor>(640);
 			Wire wire0 = sim.Create<Wire>();
 

@@ -4,9 +4,9 @@ using System.Collections.Generic;
 
 namespace SharpCircuit {
 
-	public class LEDElm : DiodeElm {
+	public class LED : Diode {
 
-		public LEDElm() : base() {
+		public LED() : base() {
 			forwardDrop = 2.1024259;
 			setup();
 		}

@@ -535,7 +535,7 @@ namespace SharpCircuit {
 				ICircuitElement ce = elements[i];
 
 				// look for inductors with no current path
-				if(ce is InductorElm) {
+				if(ce is Inductor) {
 					FindPathInfo fpi = new FindPathInfo(this, FindPathInfo.PathType.INDUCT, ce, ce.getLeadNode(1));
 					// first try findPath with maximum depth of 5, to avoid slowdowns
 					if(!fpi.findPath(ce.getLeadNode(0), 5) && !fpi.findPath(ce.getLeadNode(0))) {
@@ -559,7 +559,7 @@ namespace SharpCircuit {
 				}
 
 				// look for shorted caps, or caps w/ voltage but no R
-				if(ce is CapacitorElm) {
+				if(ce is Capacitor) {
 					FindPathInfo fpi = new FindPathInfo(this, FindPathInfo.PathType.SHORT, ce, ce.getLeadNode(1));
 					if(fpi.findPath(ce.getLeadNode(0))) {
 						//System.out.println(ce + " shorted");
@@ -1062,7 +1062,7 @@ namespace SharpCircuit {
 						continue;
 
 					if(type == PathType.CAP_V)
-						if(!(ce.isWire() || ce is CapacitorElm || ce is Voltage))
+						if(!(ce.isWire() || ce is Capacitor || ce is Voltage))
 							continue;
 
 					if(n1 == 0) {
@@ -1090,7 +1090,7 @@ namespace SharpCircuit {
 						return true;
 					}
 
-					if(type == PathType.INDUCT && ce is InductorElm) {
+					if(type == PathType.INDUCT && ce is Inductor) {
 						double c = ce.getCurrent();
 						if(j == 0)
 							c = -c;

@@ -37,13 +37,13 @@ namespace SharpCircuit {
 		/// </summary>
 		public double holdingI { get; set; }
 
-		private Diode diode;
+		private DiodeBase diode;
 		private double ia, ic, ig;
 		private double lastvac;
 		private double lastvag;
 
 		public SiliconRectifier() : base() {
-			diode = new Diode();
+			diode = new DiodeBase();
 			diode.setup(0.8, 0);
 			cresistance = 50;
 			holdingI = 0.0082;

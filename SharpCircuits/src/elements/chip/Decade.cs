@@ -4,9 +4,9 @@ using System.Collections.Generic;
 
 namespace SharpCircuit {
 
-	public class DecadeElm : Chip {
+	public class Decade : Chip {
 
-		public DecadeElm() : base() {
+		public Decade() : base() {
 
 		}
 

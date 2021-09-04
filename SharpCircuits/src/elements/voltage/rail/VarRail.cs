@@ -4,11 +4,11 @@ using System.Collections.Generic;
 
 namespace SharpCircuit {
 
-	public class VarRailElm : VoltageInput {
+	public class VarRail : VoltageInput {
 
 		public double output { get; set; }
 
-		public VarRailElm() : base(WaveType.VAR) {
+		public VarRail() : base(WaveType.VAR) {
 			output = 1;
 			frequency = maxVoltage;
 			waveform = WaveType.VAR;

@@ -4,15 +4,15 @@ using System.Collections.Generic;
 
 namespace SharpCircuit {
 
-	public class CC2Elm : Chip {
+	public class CC2 : Chip {
 
 		private double gain;
 
-		public CC2Elm() : base() {
+		public CC2() : base() {
 			gain = 1;
 		}
 
-		public CC2Elm(int g) : base() {
+		public CC2(int g) : base() {
 			gain = g;
 		}
 
@@ -54,7 +54,7 @@ namespace SharpCircuit {
 
 	}
 
-	class CC2NegElm : CC2Elm {
+	class CC2NegElm : CC2 {
 
 		public CC2NegElm() : base() {
 

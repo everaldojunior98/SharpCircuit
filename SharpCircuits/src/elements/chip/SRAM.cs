@@ -6,9 +6,9 @@ namespace SharpCircuit {
 
 	// Contributed by Edward Calver
 
-	public class SRAMElm : Chip {
+	public class SRAM : Chip {
 
-		public SRAMElm() : base() {
+		public SRAM() : base() {
 			short i;
 			for(i = 0; i < 256; i++)
 				data[i] = 0;

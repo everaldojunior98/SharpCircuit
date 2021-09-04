@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace SharpCircuit {
 
-	public class TimerElm : Chip {
+	public class Timer : Chip {
 
 		public bool hasResetPin {
 			get {
@@ -29,7 +29,7 @@ namespace SharpCircuit {
 
 		private bool setOut, @out;
 
-		public TimerElm() : base() {
+		public Timer() : base() {
 
 		}
 

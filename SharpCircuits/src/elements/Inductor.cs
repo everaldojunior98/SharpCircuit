@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace SharpCircuit {
 
-	public class InductorElm : CircuitElement {
+	public class Inductor : CircuitElement {
 
 		public Circuit.Lead leadIn { get { return lead0; } }
 		public Circuit.Lead leadOut { get { return lead1; } }
@@ -19,12 +19,12 @@ namespace SharpCircuit {
 		double compResistance;
 		double curSourceValue;
 
-		public InductorElm() : base() {
+		public Inductor() : base() {
 			nodes = new int[2];
 			inductance = 1;
 		}
 
-		public InductorElm(double induc) : base() {
+		public Inductor(double induc) : base() {
 			nodes = new int[2];
 			inductance = induc;
 		}

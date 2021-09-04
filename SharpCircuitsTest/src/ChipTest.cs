@@ -17,7 +17,7 @@ namespace SharpCircuitTest {
 			var logicIn0 = sim.Create<LogicInput>();
 			var logicIn1 = sim.Create<LogicInput>();
 
-			var counter0 = sim.Create<CounterElm>();
+			var counter0 = sim.Create<Counter>();
 		}
 
 		[TestCase(0, 0, 0)]
@@ -163,7 +163,7 @@ namespace SharpCircuitTest {
 			var logicIn0 = sim.Create<LogicInput>();
 			var logicIn1 = sim.Create<LogicInput>();
 
-			var dflip0 = sim.Create<TFlipFlopElm>();
+			var dflip0 = sim.Create<TFlipFlop>();
 
 			var logicOut0 = sim.Create<LogicOutput>();
 			var logicOut1 = sim.Create<LogicOutput>();

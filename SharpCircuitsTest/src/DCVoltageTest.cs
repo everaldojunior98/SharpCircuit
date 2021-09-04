@@ -15,7 +15,7 @@ namespace SharpCircuitTest {
 			Circuit sim = new Circuit();
 
 			var volt0 = sim.Create<DCVoltageSource>();
-			var cap0 = sim.Create<CapacitorElm>(2E-4);
+			var cap0 = sim.Create<Capacitor>(2E-4);
 			var res0 = sim.Create<Resistor>();
 
 			var switch0 = sim.Create<SwitchSPDT>();

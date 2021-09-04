@@ -4,9 +4,9 @@ using System.Collections.Generic;
 
 namespace SharpCircuit {
 
-	public class JfetElm : Mosfet {
+	public class Jfet : Mosfet {
 		
-		public JfetElm(bool pnpflag) : base(pnpflag) {
+		public Jfet(bool pnpflag) : base(pnpflag) {
 
 		}
 
@@ -24,7 +24,7 @@ namespace SharpCircuit {
 		}*/
 	}
 
-	public class NJfetElm : JfetElm {
+	public class NJfetElm : Jfet {
 
 		public NJfetElm() : base(false) {
 
@@ -32,7 +32,7 @@ namespace SharpCircuit {
 
 	}
 
-	public class PJfetElm : JfetElm {
+	public class PJfetElm : Jfet {
 
 		public PJfetElm() : base(false) {
 

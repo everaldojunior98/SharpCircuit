@@ -12,7 +12,7 @@ namespace SharpCircuit {
 
 		public Chip() : base() {
 			if(needsBits())
-				bits = (this is DecadeElm) ? 10 : 4;
+				bits = (this is Decade) ? 10 : 4;
 			setupPins();
 		}
 

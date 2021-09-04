@@ -4,9 +4,9 @@ using System.Collections.Generic;
 
 namespace SharpCircuit {
 
-	public class ADCElm : Chip {
+	public class ADC : Chip {
 		
-		public ADCElm() : base() {
+		public ADC() : base() {
 			
 		}
 

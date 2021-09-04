@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace SharpCircuit {
 
-	public class JKFlipFlopElm : Chip {
+	public class JKFlipFlop : Chip {
 
 		public Circuit.Lead leadJ { get { return lead0; } }
 		public Circuit.Lead leadCLK { get { return lead1; } }

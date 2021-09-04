@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace SharpCircuit {
 
-	public class Diode {
+	public class DiodeBase {
 
 		private int[] nodes;
 
@@ -13,7 +13,7 @@ namespace SharpCircuit {
 		private double lastvoltdiff;
 		private double vcrit;
 
-		public Diode() {
+		public DiodeBase() {
 			nodes = new int[2];
 		}
 

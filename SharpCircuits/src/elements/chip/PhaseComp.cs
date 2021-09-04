@@ -4,11 +4,11 @@ using System.Collections.Generic;
 
 namespace SharpCircuit {
 
-	public class PhaseCompElm : Chip {
+	public class PhaseComp : Chip {
 
 		private bool ff1, ff2;
 
-		public PhaseCompElm() : base() {
+		public PhaseComp() : base() {
 
 		}
 

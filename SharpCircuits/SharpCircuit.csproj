@@ -48,47 +48,47 @@
     <Compile Include="src\CircuitElement.cs" />
     <Compile Include="src\Circuit.cs" />
     <Compile Include="src\CircuitNode.cs" />
-    <Compile Include="src\Diode.cs" />
+    <Compile Include="src\DiodeBase.cs" />
     <Compile Include="src\elements\AMSource.cs" />
     <Compile Include="src\elements\AnalogSwitch2.cs" />
     <Compile Include="src\elements\AnalogSwitch.cs" />
-    <Compile Include="src\elements\CapacitorElm.cs" />
+    <Compile Include="src\elements\Capacitor.cs" />
     <Compile Include="src\elements\Chip.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="src\elements\chip\ADCElm.cs" />
-    <Compile Include="src\elements\chip\CC2Elm.cs" />
-    <Compile Include="src\elements\chip\CounterElm.cs" />
-    <Compile Include="src\elements\chip\DACElm.cs" />
-    <Compile Include="src\elements\chip\DecadeElm.cs" />
-    <Compile Include="src\elements\chip\DeMultiplexerElm.cs" />
+    <Compile Include="src\elements\chip\ADC.cs" />
+    <Compile Include="src\elements\chip\CC2.cs" />
+    <Compile Include="src\elements\chip\Counter.cs" />
+    <Compile Include="src\elements\chip\DAC.cs" />
+    <Compile Include="src\elements\chip\Decade.cs" />
+    <Compile Include="src\elements\chip\DeMultiplexer.cs" />
     <Compile Include="src\elements\chip\DFlipFlop.cs" />
     <Compile Include="src\elements\chip\FullAdder.cs" />
     <Compile Include="src\elements\chip\HalfAdder.cs" />
-    <Compile Include="src\elements\chip\JKFlipFlopElm.cs" />
-    <Compile Include="src\elements\chip\LatchElm.cs" />
-    <Compile Include="src\elements\chip\LEDMatrixElm.cs" />
-    <Compile Include="src\elements\chip\MultiplexerElm.cs" />
-    <Compile Include="src\elements\chip\PhaseCompElm.cs">
+    <Compile Include="src\elements\chip\JKFlipFlop.cs" />
+    <Compile Include="src\elements\chip\Latch.cs" />
+    <Compile Include="src\elements\chip\LEDMatrix.cs" />
+    <Compile Include="src\elements\chip\Multiplexer.cs" />
+    <Compile Include="src\elements\chip\PhaseComp.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="src\elements\chip\PisoShiftElm.cs" />
-    <Compile Include="src\elements\chip\SeqGenElm.cs" />
-    <Compile Include="src\elements\chip\SevenSegDecoderElm.cs" />
-    <Compile Include="src\elements\chip\SevenSegElm.cs" />
-    <Compile Include="src\elements\chip\SipoShiftElm.cs" />
-    <Compile Include="src\elements\chip\SRAMElm.cs" />
-    <Compile Include="src\elements\chip\TFlipFlopElm.cs" />
-    <Compile Include="src\elements\chip\TimerElm.cs" />
-    <Compile Include="src\elements\chip\VCOElm.cs">
+    <Compile Include="src\elements\chip\PisoShift.cs" />
+    <Compile Include="src\elements\chip\SeqGen.cs" />
+    <Compile Include="src\elements\chip\SevenSegDecoder.cs" />
+    <Compile Include="src\elements\chip\SevenSeg.cs" />
+    <Compile Include="src\elements\chip\SipoShift.cs" />
+    <Compile Include="src\elements\chip\SRAM.cs" />
+    <Compile Include="src\elements\chip\TFlipFlop.cs" />
+    <Compile Include="src\elements\chip\Timer.cs" />
+    <Compile Include="src\elements\chip\VCO.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="src\elements\CurrentSource.cs" />
-    <Compile Include="src\elements\DiodeElm.cs" />
-    <Compile Include="src\elements\diode\LEDElm.cs">
+    <Compile Include="src\elements\Diode.cs" />
+    <Compile Include="src\elements\diode\LED.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="src\elements\diode\ZenerElm.cs">
+    <Compile Include="src\elements\diode\Zener.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="src\elements\FMSource.cs" />
@@ -99,7 +99,7 @@
     <Compile Include="src\elements\gate\XorGate.cs" />
     <Compile Include="src\elements\LogicGate.cs" />
     <Compile Include="src\elements\Ground.cs" />
-    <Compile Include="src\elements\InductorElm.cs" />
+    <Compile Include="src\elements\Inductor.cs" />
     <Compile Include="src\elements\Inverter.cs" />
     <Compile Include="src\elements\InvertingSchmittTrigger.cs" />
     <Compile Include="src\elements\Lamp.cs" />
@@ -109,7 +109,7 @@
     <Compile Include="src\elements\Mosfet.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="src\elements\mosfet\JfetElm.cs">
+    <Compile Include="src\elements\mosfet\Jfet.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="src\elements\mosfet\NMosfet.cs">
@@ -130,7 +130,7 @@
     <Compile Include="src\elements\voltage\rail\ClockInput.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="src\elements\voltage\rail\VarRailElm.cs">
+    <Compile Include="src\elements\voltage\rail\VarRail.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="src\elements\Resistor.cs" />

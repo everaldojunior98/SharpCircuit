@@ -61,7 +61,7 @@ namespace SharpCircuitTest {
 
 			var res0 = sim.Create<Resistor>(1000);
 			var res1 = sim.Create<Resistor>(20000);
-			var cap0 = sim.Create<CapacitorElm>(2.5E-7);
+			var cap0 = sim.Create<Capacitor>(2.5E-7);
 			var opAmp0 = sim.Create<OpAmp>();
 			var grnd0 = sim.Create<Ground>();
 
@@ -78,7 +78,7 @@ namespace SharpCircuitTest {
 			square1.frequency = 20;
 
 			var res3 = sim.Create<Resistor>(1000);
-			var induct0 = sim.Create<InductorElm>(5);
+			var induct0 = sim.Create<Inductor>(5);
 			var grnd1 = sim.Create<Ground>();
 
 			sim.Connect(square1.leadPos, res3.leadIn);
@@ -109,7 +109,7 @@ namespace SharpCircuitTest {
 
 			var res0 = sim.Create<Resistor>(100000);
 			var res1 = sim.Create<Resistor>(1000);
-			var cap0 = sim.Create<CapacitorElm>(1E-7);
+			var cap0 = sim.Create<Capacitor>(1E-7);
 			var opAmp0 = sim.Create<OpAmp>();
 			var grnd0 = sim.Create<Ground>();
 
@@ -127,7 +127,7 @@ namespace SharpCircuitTest {
 			var square1 = sim.Create<VoltageInput>(Voltage.WaveType.SQUARE);
 			square1.frequency = 30;
 
-			var cap1 = sim.Create<CapacitorElm>(1E-5);
+			var cap1 = sim.Create<Capacitor>(1E-5);
 			var res2 = sim.Create<Resistor>(1000);
 			var grnd1 = sim.Create<Ground>();
 

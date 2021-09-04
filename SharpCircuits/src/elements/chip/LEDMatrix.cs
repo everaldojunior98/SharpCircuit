@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace SharpCircuit {
 
-	public class LEDMatrixElm : Chip {
+	public class LEDMatrix : Chip {
 
 		public bool negateRows { get; set; }
 		public bool negateColumns { get; set; }
@@ -13,7 +13,7 @@ namespace SharpCircuit {
 		public double colorG { get; set; }
 		public double colorB { get; set; }
 
-		public LEDMatrixElm() : base() {
+		public LEDMatrix() : base() {
 			colorR = 1;
 		}
 

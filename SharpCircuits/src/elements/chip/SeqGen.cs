@@ -6,7 +6,7 @@ namespace SharpCircuit {
 
 	// Contributed by Edward Calver
 
-	public class SeqGenElm : Chip {
+	public class SeqGen : Chip {
 
 		public bool Bit0Set {
 			get {
@@ -132,7 +132,7 @@ namespace SharpCircuit {
 		private double lastchangetime = 0;
 		private bool clockstate = false;
 
-		public SeqGenElm() : base() {
+		public SeqGen() : base() {
 
 		}
 

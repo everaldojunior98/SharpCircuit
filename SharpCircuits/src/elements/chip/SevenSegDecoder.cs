@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace SharpCircuit {
 
-	public class SevenSegDecoderElm : Chip {
+	public class SevenSegDecoder : Chip {
 
 		private static bool[,] symbols = {
 				{ true, true, true, true, true, true, false },// 0
@@ -25,7 +25,7 @@ namespace SharpCircuit {
 				{ true, false, false, false, true, true, true },// F
 		};
 
-		public SevenSegDecoderElm() : base() {
+		public SevenSegDecoder() : base() {
 
 		}
 

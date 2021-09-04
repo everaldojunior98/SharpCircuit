@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace SharpCircuit {
 
-	public class TFlipFlopElm : Chip {
+	public class TFlipFlop : Chip {
 
 		public Circuit.Lead leadT { get { return lead0; } }
 		public Circuit.Lead leadQ { get { return lead1; } }

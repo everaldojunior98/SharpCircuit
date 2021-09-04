@@ -4,12 +4,12 @@ using System.Collections.Generic;
 
 namespace SharpCircuit {
 
-	public class DiodeElm : CircuitElement {
+	public class Diode : CircuitElement {
 
 		public Circuit.Lead leadIn { get { return lead0; } }
 		public Circuit.Lead leadOut { get { return lead1; } }
 
-		protected Diode diode;
+		protected DiodeBase diode;
 
 		/// <summary>
 		/// Fwd Voltage @ 1A
@@ -42,8 +42,8 @@ namespace SharpCircuit {
 
 		protected double defaultdrop = 0.805904783;
 
-		public DiodeElm() : base() {
-			diode = new Diode();
+		public Diode() : base() {
+			diode = new DiodeBase();
 			forwardDrop = defaultdrop;
 			zvoltage = 0;
 			setup();
