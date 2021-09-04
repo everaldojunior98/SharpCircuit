@@ -13,10 +13,10 @@ namespace SharpCircuit {
 
 		//public readonly static String ohmString = "ohm";
 
-		public class Lead {
-			public ICircuitElement elem { get; private set; }
-			public Int32 ndx { get; private set; }
-			public Lead(ICircuitElement e, Int32 i) { elem = e; ndx = i; }
+		public readonly struct Lead {
+			public readonly ICircuitElement elem;
+			public readonly int ndx;
+			public Lead(ICircuitElement e, int i) { elem = e; ndx = i; }
 		}
 
 		public double time { 
