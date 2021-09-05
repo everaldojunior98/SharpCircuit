@@ -5,18 +5,21 @@ using System.Collections.Generic;
 namespace SharpCircuit {
 
 	public class Jfet : Mosfet {
-		
+
+		public const double JFET_DEFAULT_THRESHOLD = -4;
+		public const double JFET_BETA = 0.00125;
+
 		public Jfet(bool pnpflag) : base(pnpflag) {
 
 		}
 
 		// These values are taken from Hayes+Horowitz p155
 		public override double getDefaultThreshold() {
-			return -4;
+			return JFET_DEFAULT_THRESHOLD;
 		}
 
 		public override double getBeta() {
-			return 0.00125;
+			return JFET_BETA;
 		}
 
 		/*public override void getInfo(String[] arr) {

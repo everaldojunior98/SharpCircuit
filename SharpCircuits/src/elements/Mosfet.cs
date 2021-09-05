@@ -6,6 +6,9 @@ namespace SharpCircuit {
 
 	public class Mosfet : CircuitElement {
 
+		public const double DEFAULT_THRESHOLD = 1.5;
+		public const double BETA = 0.02;
+
 		public Circuit.Lead leadGate { get { return lead0; } }
 		public Circuit.Lead leadSrc { get { return lead1; } }
 		public Circuit.Lead leadDrain { get { return new Circuit.Lead(this, 2); } }
@@ -37,11 +40,11 @@ namespace SharpCircuit {
 		}
 
 		public virtual double getDefaultThreshold() {
-			return 1.5;
+			return DEFAULT_THRESHOLD;
 		}
 
 		public virtual double getBeta() {
-			return 0.02;
+			return BETA;
 		}
 
 		public override bool nonLinear() { return true; }
