@@ -8,11 +8,11 @@ namespace SharpCircuit {
 	// http://www.camotruck.net/rollins/simulator.html
 	public class Zener : Diode {
 
-		public static readonly double default_zvoltage = 5.6;
+		public const double ZENER_DEFAULT_ZVOLTAGE = 5.6;
 
 		public Zener() : base() {
 			diode.leakage = 5e-6; // 1N4004 is 5.0 uAmp
-			zvoltage = default_zvoltage;
+			zvoltage = ZENER_DEFAULT_ZVOLTAGE;
 			setup();
 		}
 
