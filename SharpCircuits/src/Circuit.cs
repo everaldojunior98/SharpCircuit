@@ -17,7 +17,9 @@ namespace SharpCircuit {
 			public readonly ICircuitElement elem;
 			public readonly int ndx;
 			public Lead(ICircuitElement e, int i) { elem = e; ndx = i; }
-		}
+
+			public override string ToString() => $"Lead. Element {elem}. Index: {ndx}";
+        }
 
 		public double time { 
 			get; 
