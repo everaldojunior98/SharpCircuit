@@ -24,7 +24,7 @@ namespace SharpCircuit.elements
         private double K;
         private double Kb;
         private double J;
-        private double b;
+        private double B;
 
         private double coilCurrent;
         private double inertiaCurrent;
@@ -32,14 +32,35 @@ namespace SharpCircuit.elements
 
         public DCMotor()
         {
-            inductance = 0.5;
-            resistance = 1;
             angle = pi / 2;
             speed = 0;
+
+            inductance = 0.5;
+            resistance = 1;
             K = 0.15;
-            b = 0.05;
+            B = 0.05;
             J = 0.02;
             Kb = 0.15;
+
+            voltSources = new int[2];
+
+            ind = new InductorBase(inductance, 0, false);
+            indInertia = new InductorBase(J, 0, false);
+
+            allocLeads();
+        }
+
+        public DCMotor(double induc, double res, double k, double b, double j, double kb)
+        {
+            angle = pi / 2;
+            speed = 0;
+
+            inductance = induc;
+            resistance = res;
+            K = k;
+            B = b;
+            J = j;
+            Kb = kb;
 
             voltSources = new int[2];
 
@@ -95,7 +116,7 @@ namespace SharpCircuit.elements
             // inertia inductor from internal nodes[4] to internal nodes[5]
             indInertia.stamp(sim, lead_node[4], lead_node[5]);
             // resistor from  internal nodes[5] to  ground 
-            sim.stampResistor(lead_node[5], 0, b);
+            sim.stampResistor(lead_node[5], 0, B);
             // Voltage Source from  internal nodes[4] to ground
             sim.stampVoltageSource(lead_node[4], 0, voltSources[1]);
         }
