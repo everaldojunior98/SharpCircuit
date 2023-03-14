@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31624.102
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33205.214
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpCircuitTest", "SharpCircuitsTest\SharpCircuitTest.csproj", "{C217E955-F5B6-46F8-A805-283D725F8C36}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpCircuit", "SharpCircuits\SharpCircuit.csproj", "{66C46D0D-75C8-402A-95AB-76DE912C136B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SharpCircuit", "SharpCircuits\SharpCircuit.csproj", "{66C46D0D-75C8-402A-95AB-76DE912C136B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
